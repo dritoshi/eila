@@ -1,0 +1,6 @@
+Eila: General project template for pipeline of data analysis
+Eila provides functions to automatically build a directory
+tree for a new Ruby Project
+
+Author: Itoshi NIKAIDO <dritoshi@gmail.com>
+License: Artistic-2.0

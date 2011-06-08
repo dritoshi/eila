@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.push("~/opt/eila/lib")
+require 'eila'
+require 'optparse'
+
+# make optparser object
+parser = OptionParser.new
+parser.on('-i') { puts "-i" }
+parser.on('-o') { puts '-o' }
+
+subparsers = Hash.new {|h,k|
+  $stderr.puts "no such subcommand: #{k}"
+  exit 1
+}
+subparsers['create'] = OptionParser.new.on('') { |v|
+  puts "create #{v}"
+}
+#subparsers['list'] = OptionParser.new.on('-i') { puts "list -i" }
+
+# parsing options
+parser.order!(ARGV)
+subparsers[ARGV.shift].parse!(ARGV) unless ARGV.empty?
+
+# make project template
+project_name = ARGV.shift
+Eila.new(project_name)
