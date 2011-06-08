@@ -2,7 +2,7 @@ require 'fileutils'
 
 class Eila
   def initialize(project_name)
-    @current_dir = Dir.pwd
+    @current_dir  = Dir.pwd
     @project_name = project_name
     
     @dirs = %w(common_data input results lib bin doc test logs)
@@ -10,7 +10,7 @@ class Eila
     @top_dir       = @current_dir + "/" + @project_name
     @unittest_file = @top_dir + "/test/unittest_#{@project_name}.rb"
     @rake_file     = @top_dir + '/Rakefile'
-    @config_file     = @top_dir + '/config.yaml'
+    @config_file   = @top_dir + '/config.yaml'
     @class_file    = @top_dir + '/lib/' + @project_name + ".rb"
     @git_ignore_file = @top_dir + '/.gitignore'
     
@@ -86,6 +86,8 @@ File.open("./config.yaml") {|io|
     end
   }
 }
+
+desc \"View configuration of your project\"
 task :view_config do
   pp base_dir
   pp param
