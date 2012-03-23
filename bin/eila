@@ -1,6 +1,14 @@
 #!/usr/bin/env ruby
 
-$LOAD_PATH.push("~/opt/eila/lib")
+eila_home = nil
+if ENV['EILA_HOME'] == nil
+  raise "Please set eila home directory in $EILA_HOME environment value."
+else
+  eila_home = ENV['EILA_HOME']
+end
+
+$LOAD_PATH.push(eila_home)
+
 require 'eila'
 require 'optparse'
 
